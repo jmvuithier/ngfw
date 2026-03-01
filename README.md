@@ -36,31 +36,40 @@ Managing certificate chains manually can be error-prone, especially when dealing
 
 
 
-Palo Alto Networks Automated Backup Solution (Debian 12)
-Directory Structure
-Ensure all script files are placed in /opt/pan-backup/.
-/opt/pan-backup/.env (Hidden credentials file)
-/opt/pan-backup/backup-config.py (Main Python backup script)
-/opt/pan-backup/setup-cron.sh (Bash deployment script)
-/etc/logrotate.d/pan-backup (Log rotation configuration)
-1. The Credentials File (.env)
-Filepath: /opt/pan-backup/.env Permissions: chmod 600 /opt/pan-backup/.env
-# /opt/pan-backup/.env
+# Palo Alto Networks Automated Backup (Debian 12)
+
+A lightweight, fully automated solution to back up Palo Alto Networks firewall configurations using their XML API. Designed for Debian 12, this project features secure credential storage, automated cleanup of old backups, and daily email reporting via Gmail.
 
 
 
-2. The Python Backup Script (backup-config.py)
-Filepath: /opt/pan-backup/backup-config.py Permissions: chmod 700 /opt/pan-backup/backup-config.py (The bash script handles this automatically).
+## ✨ Features
 
+* **Automated Daily Backups:** Uses cron to fetch running configurations at 01:00 AM daily.
+* **7-Day Retention Policy:** Automatically deletes `.xml` backup files older than 7 days to conserve disk space.
+* **Email Reporting:** Sends a detailed success/failure report via Gmail upon completion.
+* **Secure Credential Storage:** Uses a `.env` file to keep API keys and email passwords out of the source code.
+* **Log Management:** Includes native Debian `logrotate` configuration to prevent log files from growing indefinitely.
+* **Automated Setup:** Includes a Bash script to automatically install dependencies, set permissions, and configure the cron job.
 
+---
 
-3. The Bash Installation & Cron Script (setup-cron.sh)
-Filepath: /opt/pan-backup/setup-cron.sh Usage: Must be executed with sudo ./setup-cron.sh
-#!/bin/bash
+## 📋 Prerequisites
 
+* **OS:** Debian 12 (or similar Debian-based Linux distribution).
+* **Network:** The server must be able to reach your Palo Alto firewalls on TCP port 443 (HTTPS).
+* **Firewall Accounts:** Read-only (or Superuser read-only) API keys for your Palo Alto firewalls.
+* **Email:** A Google account with an **App Password** generated for sending automated emails.
 
-4. The Log Rotation Configuration
-Filepath: /etc/logrotate.d/pan-backup Usage: Create as root (sudo nano /etc/logrotate.d/pan-backup)
+---
 
+## 📂 Directory Structure
 
-
+```text
+/opt/pan-backup/
+├── archives/               # Directory where .xml backups are saved
+├── .env                    # Hidden configuration file (User created)
+├── backup-config.py        # Main Python engine
+├── setup-cron.sh           # Bash deployment script
+└── backup.log              # Script execution log
+/etc/logrotate.d/
+└── pan-backup              # Logrotate configuration file
