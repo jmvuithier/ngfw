@@ -1,0 +1,13 @@
+SCM Bulk Address Creator 🚀A Python-based automation tool to bulk-import Address Objects into Palo Alto Networks Strata Cloud Manager (SCM). This script streamlines the process of migrating or creating multiple IP/FQDN objects by reading from a CSV file and utilizing the SCM REST API.📌 OverviewManually entering hundreds of address objects into a web interface is error-prone and time-consuming. This script:Authenticates with Palo Alto's OAuth2 service.Parses a local CSV file.Normalizes IP data (automatically adding /32 for host IPs).Pushes objects into a specific Configuration Snippet in SCM.🛠️ PrerequisitesPython 3.8+PIP Packages:Bashpip install requests
+SCM Credentials: You need a Service Account with Client ID, Client Secret, and your TSG ID.⚙️ ConfigurationEdit the variables in the # --- Configuration --- section of the script:VariableDescriptionCLIENT_IDYour SCM Service Account Client ID.CLIENT_SECRETYour SCM Service Account Client Secret.TSG_IDYour Tenant Service Group ID.SNIPPET_NAMEThe target Snippet (e.g., test or Gold-Template).CSV_FILE_PATHThe absolute path to your addresses.csv.📁 CSV Template StructureYour CSV file must include the following headers. The script is designed to handle both IP addresses and FQDNs.namehostnameip addressdescriptionWeb_Server_0110.1.1.5Production Web ServerGoogle_DNSgoogle.comPublic FQDNInternal_Subnet192.168.1.0/24HQ LAN[!TIP]If a row contains an ip address, the script creates an IP Netmask object. If the IP is missing but hostname is present, it creates an FQDN object.🚀 UsagePrepare your data: Save your addresses in the CSV format shown above.Update Credentials: Add your API keys to the script.Run the script:Bashpython scm_bulk_address.py
+Terminal Output Example:PlaintextAuthenticating with Strata Cloud Manager...
+Reading data from '/Path/addresses.csv'...
+--------------------------------------------------
+Processing: 'Web_Server_01' (IP: 10.1.1.5/32) -> Snippet: 'test'...
+  [+] SUCCESS! Object ID: 550e8400-e29b-41d4-a716-446655440000
+--------------------------------------------------
+Processing: 'Google_DNS' (FQDN: google.com) -> Snippet: 'test'...
+  [+] SUCCESS! Object ID: 6ba7b810-9dad-11d1-80b4-00c04fd430c8
+--------------------------------------------------
+Bulk address object creation finished!
+⚠️ Security WarningDo not commit your CLIENT_SECRET to a public GitHub repository.Recommended: Use environment variables or a .env file to store credentials.Git: Add *.csv and your script (if it contains secrets) to your .gitignore file.

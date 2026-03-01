@@ -1,0 +1,3 @@
+name,hostname,ip address,description
+Web-Server-01,,192.168.1.50,Primary Web Server
+Google-Public-DNS-1,,8.8.8.8,Primary Google DNS
