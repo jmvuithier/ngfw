@@ -33,7 +33,3 @@ Managing certificate chains manually can be error-prone, especially when dealing
 | **Permissions** | Admin account with XML API and Commit privileges. |
 | **Files** | Root and Issuing CA files in `.pem` format. |
 | **Dependencies** | `curl` (for Linux) or PowerShell 5.1+ (for Windows). |
-
----
-
-## 📖 Usage
