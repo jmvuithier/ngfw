@@ -1,4 +1,4 @@
-# PAN-OS Certificate Automation (Root & Issuing CA)
+# PAN-OS Certificate Automation (Root & Issuing CA) and Backup Panos
 
 This repository provides automation scripts for maintaining **Root CA** and **Issuing CA** certificates on **Palo Alto Networks (PAN-OS) 11.x** and later. 
 
