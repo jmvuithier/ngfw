@@ -1,19 +1,24 @@
-# PAN-OS Certificate Automation (Root & Issuing CA) and Backup Panos
+# Tools for Palo Alto Networks (PANOS)
 
-This repository provides automation scripts for maintaining **Root CA** and **Issuing CA** certificates on **Palo Alto Networks (PAN-OS) 11.x** and later. 
+# This repository provides automation scripts for:
 
+## Maintaining **Root CA** and **Issuing CA** certificates on **Palo Alto Networks (PAN-OS) 11.x** and later. 
 These tools are inspired by and based on the logic found in the official [PaloAltoNetworks/pan-chainguard-content](https://github.com/PaloAltoNetworks/pan-chainguard-content) repository, adapted for streamlined deployment via Linux and Windows environments.
+
+## Backup Firewall with cron in Debian 12 for non customer with **Panorama or Strata Cloud Manager** 
+
+## Create Objects like** host name with ip addresses** on **Snippet** in **Strata Cloud Manager** commonly used for migration from other vendor
+
 
 ---
 
-## 🚀 Overview
+## 🚀 PANOS update Trusted Root CA
 
 Managing certificate chains manually can be error-prone, especially when dealing with multiple firewalls. These scripts automate the entire lifecycle of certificate deployment:
 
 1.  **Authentication**: Connects to the firewall to generate a secure API key.
 2.  **Upload**: Transfers multiple certificate files (Root and Intermediate/Issuing) to the firewall.
 3.  **Activation**: Executes a `commit` to move the certificates into the running configuration.
-
 
 
 ## 🛠 Features
@@ -36,10 +41,9 @@ Managing certificate chains manually can be error-prone, especially when dealing
 
 
 
-# Palo Alto Networks Automated Backup (Debian 12)
+## 🚀 PANOS Automated Backup (Debian 12)
 
 A lightweight, fully automated solution to back up Palo Alto Networks firewall configurations using their XML API. Designed for Debian 12, this project features secure credential storage, automated cleanup of old backups, and daily email reporting via Gmail.
-
 
 
 ## ✨ Features
@@ -62,14 +66,18 @@ A lightweight, fully automated solution to back up Palo Alto Networks firewall c
 
 ---
 
-## 📂 Directory Structure
 
-```text
-/opt/pan-backup/
-├── archives/               # Directory where .xml backups are saved
-├── .env                    # Hidden configuration file (User created)
-├── backup-config.py        # Main Python engine
-├── setup-cron.sh           # Bash deployment script
-└── backup.log              # Script execution log
-/etc/logrotate.d/
-└── pan-backup              # Logrotate configuration file
+
+## 🚀 Strata Cloud Manager  Automated objects creation Objects like** host name with ip addresses** on **Snippet** in **Strata Cloud Manager** commonly used for migration from other vendor
+## ✨ Features
+
+* **Automated creation of objects in Strata Cloud Manager:** Import Objects in SCM Snippet from CSV file
+---
+
+## 📋 Prerequisites
+* **Strata Cloud Manager API service account
+* **OS:** No OS design to work with Python (Min Version 3.11).
+* **Python Libraries:** The following library need to be install "import requests, import csv, import sys,import os).
+
+
+
