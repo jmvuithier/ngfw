@@ -1,6 +1,6 @@
 # Tools for Palo Alto Networks (PANOS)
 
-# This repository provides automation scripts for:
+## This repository provides automation scripts for:
 
 ### Maintaining **Root CA** and **Issuing CA** certificates on **Palo Alto Networks (PAN-OS) 11.x** and later. 
 These tools are inspired by and based on the logic found in the official [PaloAltoNetworks/pan-chainguard-content](https://github.com/PaloAltoNetworks/pan-chainguard-content) repository, adapted for streamlined deployment via Linux and Windows environments.
