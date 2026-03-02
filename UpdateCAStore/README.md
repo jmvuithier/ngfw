@@ -6,6 +6,7 @@ Managing certificate chains manually can be error-prone, especially when dealing
 2.  **Upload**: Transfers multiple certificate files (Root and Intermediate/Issuing) to the firewall.
 3.  **Activation**: Executes a `commit` to move the certificates into the running configuration.
 
+---
 
 ## 🛠 Features
 
